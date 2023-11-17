@@ -24,7 +24,7 @@ screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Catch the Dots")
 
 # color definition
-BLACK =(0,0,0)
+BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
@@ -36,7 +36,7 @@ for i in range(1, 4):
 
     # Difficulty definition
     level = Level(i)  # Level setting
-    
+
     background_color = (BLACK)  # Black with varying alpha
     text_color = (WHITE)  # White with varying alpha
 
@@ -45,11 +45,10 @@ for i in range(1, 4):
     level_text = level_font.render("Get Ready For Level {}".format(i), True, text_color)
     text_rect = level_text.get_rect(center=(width // 2, height // 2))
     screen.blit(level_text, text_rect.topleft)
-      
+
     pygame.display.flip()
 
     time.sleep(3)
-
 
     # game loop
     dots = []
@@ -63,15 +62,14 @@ for i in range(1, 4):
     while enemy_health > 0 and my_health > 0:
         screen.blit(level.background_image, level.background_rect)  # Draw the background image
         for event in pygame.event.get():
-         if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
-    
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
 
-     # Create a new red dot (once per second)
+        # Create a new red dot (once per second)
         if time.time() > next_dot_time_red and time.time() > freeze_time:
             dot = Dot(random.randint(20, width - 30),
-                  random.randint(20, height - 30), color=RED, alpha=0, radius=level.radius)
+                      random.randint(20, height - 30), color=RED, alpha=0, radius=level.radius)
             dots.append(dot)
             next_dot_time_red = time.time() + 1  # Update the time when the next red dot will appear
 
@@ -81,16 +79,14 @@ for i in range(1, 4):
             existing_blue_dots = [dot for dot in dots if dot.color == BLUE]
             if not existing_blue_dots:
                 dot = Dot(random.randint(20, width - 20),  # Set the range so that the dot is not cut off on the screen
-                        random.randint(20, height - 20), color=BLUE, radius=level.radius, alpha=0)
+                          random.randint(20, height - 20), color=BLUE, radius=level.radius, alpha=0)
                 dots.append(dot)
                 next_dot_time_blue = time.time() + level.speed  # Update the time when the next blue dot will appear
-
-        
 
         # Draw all points
         for dot in dots:
             dot.draw()
-            #Fade in effect
+            # Fade in effect
             if dot.color and dot.alpha < level.dot_alpha:
                 dot.alpha += 2
 
@@ -101,18 +97,21 @@ for i in range(1, 4):
         screen.blit(enemy_text, (width - 200, 10))
 
         # The dot disappears some seconds after it is created
+        dots_to_remove = []
         for dot in dots.copy():
-            if time.time() - dot.creation_time > level.dot_time:  # If the blue dot cannot be removed and disappears
-                if dot.color == BLUE:  # If it is a blue dot
-                    dots.clear()  # remove all dots
+            if time.time() - dot.creation_time > level.dot_time:
+                if dot.color == BLUE:
+                    dots_to_remove.append(dot)
                     my_health -= int(level.enemy_attack + random.uniform(-5, 6))
-                    attacked = True   
+                    attacked = True
                     freeze_time = time.time() + 1  # Freeze the screen for 2 seconds
                     game_sound.attacked_sound.play()
-                elif dot.color == RED:  # If red dot
-                    dots.remove(dot)
+                elif dot.color == RED:
+                    dots_to_remove.append(dot)
 
-        
+        # Remove the dots outside of the loop
+        for dot in dots_to_remove:
+            dots.remove(dot)
 
         # Mouse event handling
         mouse_x, mouse_y = pygame.mouse.get_pos()
@@ -124,7 +123,7 @@ for i in range(1, 4):
                         attacked = False
                         dots.clear()  # remove all dots
                         freeze_time = time.time() + 1  # Freeze the screen for 2 seconds
-                    
+
                     elif dot.color == RED:  # If red dot
                         distance = pygame.math.Vector2(
                             dot.x - mouse_x, dot.y - mouse_y).length()
@@ -134,22 +133,18 @@ for i in range(1, 4):
                             enemy_health -= int(level.my_attack + random.uniform(-5, 6))
                             game_sound.my_attack_sound.play()
 
-       
-    
-
         # While the screen is still for 2 seconds
         if time.time() < freeze_time and attacked:
             screen.blit(level.attacked_image, level.attacked_rect)  # Draw the background image
             pygame.display.flip()  # Screen update
             continue  # do not repeat the game loop
-        elif time.time() < freeze_time and  not attacked:
+        elif time.time() < freeze_time and not attacked:
             screen.blit(level.defend_image, level.defend_rect)  # Draw the background image
             pygame.display.flip()  # Screen update
             continue  # do not repeat the game loop
 
         # Screen update
         pygame.display.flip()
-
 
     # Display the latest health value after the game ends
     screen.fill(WHITE)
@@ -163,7 +158,7 @@ for i in range(1, 4):
         screen.fill(background_color)
         lose = font.render("You Died!", True, RED)
         game_sound.died_sound.play()
-        text_rect = lose.get_rect(center=(width // 2, height // 2))   
+        text_rect = lose.get_rect(center=(width // 2, height // 2))
         screen.blit(lose, text_rect.topleft)
 
     elif enemy_health <= 0:
@@ -177,8 +172,6 @@ for i in range(1, 4):
 
     pygame.display.flip()  # Display the game over message
     time.sleep(4)  # Pause for 4 seconds before moving to the next level
-    
-
 
 # Game Finished
 running = True
@@ -188,5 +181,5 @@ while running:
             running = False
         elif event.type == pygame.KEYDOWN:  # Game ends when key is pressed
             running = False
-pygame.mixer.music.stop() # 음악종료
+pygame.mixer.music.stop()  # Music stops
 pygame.quit()
