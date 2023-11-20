@@ -31,12 +31,12 @@ BLUE = (0, 0, 255)
 my_health = 100
 attacked = True
 touched_bomb = True
-defend = True
+
 
 
 # Outer loop for game levels
 for i in range(1, 4):
-
+    i = 3
 
     # Difficulty definition
     level = Level(i)  # Level setting
@@ -121,7 +121,7 @@ for i in range(1, 4):
                     my_health -= int(level.enemy_attack + random.uniform(-5, 6))
                     attacked = True
                     touched_bomb = False
-                    defend = False
+
                     freeze_time = time.time() + 1  # Freeze the screen for 2 seconds
                     game_sound.attacked_sound.play()
                 elif dot.color == RED:
@@ -144,7 +144,7 @@ for i in range(1, 4):
                         game_sound.defend_sound.play()
                         attacked = False
                         touched_bomb = False
-                        defend = True
+
                         if i == 3:
                             my_health -= 5 #레벨 3부터는 방어해도 5데미지를 입는다
                         dots.clear()  # remove all dots
@@ -167,24 +167,24 @@ for i in range(1, 4):
                                 dots.remove(dot)
                                 attacked = False
                                 touched_bomb = True
-                                defend = False
+
                                 my_health -= 30 #폭탄데미지
                                 freeze_time = time.time() + 1  # Freeze the screen for 2 seconds
                                 game_sound.touched_bomb_sound.play()
 
 
         # While the screen is still for 1 seconds
-        if time.time() < freeze_time and attacked and not touched_bomb and not defend:
+        if time.time() < freeze_time and attacked and not touched_bomb:
             screen.blit(level.attacked_image, level.attacked_rect)  # Draw the background image
             pygame.display.flip()  # Screen update
             
             continue  # do not repeat the game loop
-        elif time.time() < freeze_time and not attacked and not touched_bomb and defend:
+        elif time.time() < freeze_time and not attacked and not touched_bomb:
             screen.blit(level.defend_image, level.defend_rect)  # Draw the background image
             pygame.display.flip()  # Screen update
             continue  # do not repeat the game loop
 
-        elif time.time() < freeze_time and not attacked and touched_bomb and not defend:
+        elif time.time() < freeze_time and not attacked and touched_bomb:
             screen.blit(level.bomb_image, level.bomb_rect)  # Draw the background image
             
             pygame.display.flip()  # Screen update
