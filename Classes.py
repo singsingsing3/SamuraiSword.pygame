@@ -47,7 +47,7 @@ class Level: # 클래스로 찍어내니까 random값이 한판 내에서 고정
           self.defend_rect = self.defend_image.get_rect()
 
         elif level == 2: #레벨 3 난이도로 난이도
-          self.radius = 10
+          self.radius = 17
           self.speed = 3
           self.my_attack = 8 #3~13
           self.enemy_attack = 20 # 15~25
@@ -62,7 +62,7 @@ class Level: # 클래스로 찍어내니까 random값이 한판 내에서 고정
           self.defend_rect = self.defend_image.get_rect()
           
         else: #난이도 최상
-          self.radius = 10
+          self.radius = 17
           self.speed = 3
           self.my_attack = 8 #3~13
           self.enemy_attack = 20 # 15~25
@@ -76,7 +76,7 @@ class Level: # 클래스로 찍어내니까 random값이 한판 내에서 고정
           self.defend_image =pygame.transform.scale(pygame.image.load('Images\Level_3_defend.png'), (width, height)) if 'Images\Level_3_defend.png' else None
           self.defend_rect = self.defend_image.get_rect()
           self.bomb_image =pygame.transform.scale(pygame.image.load('Images\Level_3_bomb.jpg'), (width, height)) if 'Images\Level_3_bomb.jpg' else None
-          self.bomb_rect = self.defend_image.get_rect()
+          self.bomb_rect = self.bomb_image.get_rect()
 
 #특수효과음
 class Sound:
@@ -95,6 +95,6 @@ class Sound:
         self.enemy_down_sound.set_volume(0.5)
         self.my_attack_sound.set_volume(0.5)
         self.my_attack_sound.set_volume(0.5)
-        self.touched_bomb_sound.set_volume(0.5)
+        self.touched_bomb_sound.set_volume(0.6)
     
    
