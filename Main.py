@@ -1,7 +1,9 @@
 import sys
 import pygame, csv
-from Initial_Game_Screen import display_main_menu
-from Game_Play import play_game
+from Playing_Game_py_Files.Initial_Game_Screen import display_main_menu
+from Playing_Game_py_Files.Game_Play import play_game
+# Please Read README.md File!
+# You can Play Game on this Main.py
 
 # Pygame initialization
 pygame.init()
@@ -51,7 +53,7 @@ current = play_game(screen, width, height, BLACK, WHITE, RED, BLUE)
 score_arr = []
 
 # Open the TXT file for reading
-with open('Hall_Of_Fame.txt', 'r') as file:
+with open('TXT_Files/Hall_Of_Fame.txt', 'r') as file:
     # Create a CSV reader
     reader = csv.reader(file, delimiter='|')
 
@@ -74,14 +76,14 @@ score_arr.sort(reverse=True, key=lambda x: x[0])
 score_arr = score_arr[:9]
 
 # Step 6: Load the scores and dates from score_arr and write them in the file and Hall of Fame DisPlay
-with open('Hall_of_Fame.txt', 'w') as file:
+with open('TXT_Files/Hall_of_Fame.txt', 'w') as file:
     file.write("       Remain_HP    Clear_Time  \n")
     for i, (score, date) in enumerate(score_arr, start=1):
         file.write(f"{i}.  |     {score}      | {date}\n")
 
 
 # Read the file content
-with open('Hall_Of_Fame.txt', 'r') as file:
+with open('TXT_Files/Hall_Of_Fame.txt', 'r') as file:
     content = file.read()
 
 # Split the content into lines
