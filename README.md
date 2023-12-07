@@ -23,7 +23,7 @@
 
 - 레벨 3에서는 방어해도 5의 피해를 입습니다.
 
-- 레벨 이후에도 체력은 회복되지 않습니다. 주의 깊게 플레이하세요.
+- 다음 레벨에 진입해도 체력은 회복되지 않습니다. 주의 깊게 플레이하세요.
 
 ### 도트 설명
 - 빨간 도트의 등장 (적의 약점): 빨간 도트를 마우스로 그어 공격하세요.
@@ -86,7 +86,7 @@ https://github.com/singsingsing3/SamuraiSword.pygame/assets/120327265/2045b918-e
 ### outline
 It is a game where you exchange attacks with your opponent.
 
-Reduce your opponent's health to 0 through **Attack**, **Defense**, and **Bomb Evasion**.
+Make your opponent's health to 0 through **Attack**, **Defense**, and **Bomb Evasion**.
 
 The game consists of a total of three levels.
 
@@ -97,7 +97,7 @@ The game consists of a total of three levels.
 
 - At level 3, you take 5 damage even if you block.
 
-- Stamina does not recover even after leveling. Please play carefully.
+- Your HP does not recover even after leveling. Please play carefully.
 
 ### Dot Description
 - Appearance of red dot (enemy weakness): Draw the red dot with the mouse to attack.
