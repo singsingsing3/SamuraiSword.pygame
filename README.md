@@ -15,9 +15,9 @@
 
 게임은 총 세 레벨로 구성되어 있습니다.
 
-![레벨 1](Images/Level_1.jpg)
-![레벨 2](Images/Level_2.jpg)
-![레벨 3](Images/Level_3.png)
+<img src="Images/Level_1.jpg" alt="Level 1" width="200" height="200">
+<img src="Images/Level_2.png" alt="Level 2" width="200" height="200">
+<img src="Images/Level_3.png" alt="Level 3" width="200" height="200">
 
 - 레벨에 따라 도트의 크기, 종류, 자신의 공격력, 받는 피해, 도트가 사라지는 속도가 변합니다.
 
@@ -69,7 +69,7 @@ Free Download / Stream: http://ncs.io/bladefury
 
 ## 4. 플레이 동영상
 
-![플레이 동영상](Playing_Vids/SamuraiSword_Play.mp4)
+https://github.com/singsingsing3/SamuraiSword.pygame/assets/120327265/2045b918-ea2b-40ff-b20d-e22d1d87ebcc
 
 
 
@@ -90,10 +90,9 @@ Reduce your opponent's health to 0 through **Attack**, **Defense**, and **Bomb E
 
 The game consists of a total of three levels.
 
-![Level 1](images/Level_1.jpg)
-![Level 2](images/Level_2.jpg)
-![Level 3](images/Level_3.png)
-
+<img src="Images/Level_1.jpg" alt="Level 1" width="200" height="200">
+<img src="Images/Level_2.png" alt="Level 2" width="200" height="200">
+<img src="Images/Level_3.png" alt="Level 3" width="200" height="200">
 - Depending on the level, the size and type of the dot, your attack power, damage received, and the speed at which the dot disappears change.
 
 - At level 3, you take 5 damage even if you block.
