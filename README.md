@@ -15,9 +15,9 @@
 
 게임은 총 세 레벨로 구성되어 있습니다.
 
-![레벨 1](images/Level_1.jpg)
-![레벨 2](images/Level_2.jpg)
-![레벨 3](images/Level_3.png)
+![레벨 1](Images/Level_1.jpg)
+![레벨 2](Images/Level_2.jpg)
+![레벨 3](Images/Level_3.png)
 
 - 레벨에 따라 도트의 크기, 종류, 자신의 공격력, 받는 피해, 도트가 사라지는 속도가 변합니다.
 
